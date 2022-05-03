@@ -1,0 +1,82 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-02-08 17:18+0100\n"
+"PO-Revision-Date: 2021-12-23 09:06+0100\n"
+"Last-Translator: Kálmán „KAMI” Szalai <kami911@gmail.com>\n"
+"Language-Team: \n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+
+#: 4.6/applet.js:159
+msgid ""
+"Make sure that the URL is valid and you have a stable internet connection. "
+"Don't hestitate to open an Issue on Github if the problem persists."
+msgstr ""
+
+#: 4.6/applet.js:215
+msgid "Can't copy current Song. Is the Radio playing?"
+msgstr ""
+
+#: 4.6/applet.js:237
+msgid "Couldn't download song from Youtube due to an Error."
+msgstr ""
+
+#: 4.6/applet.js:304
+msgid ""
+"couldn't install required dependencies. Make sure you are connected to the "
+"internet. See the Logs for more information"
+msgstr ""
+
+#: 4.6/download-dialog-mpris.py:36 4.6/download-dialog-youtube-dl.py:36
+msgid "Download Confirmation Dialog"
+msgstr ""
+
+#: 4.6/download-dialog-mpris.py:39
+#, python-format
+msgid ""
+"The radio applet depends on the '%s' plugin. It's a 3rd party plugin for "
+"mpv, which allows controlling the radio player with the sound applet."
+msgstr ""
+
+#: 4.6/download-dialog-mpris.py:39
+msgid "Do you want to proceed the download at your own risk?"
+msgstr ""
+
+#: 4.6/download-dialog-youtube-dl.py:39
+#, python-format
+msgid ""
+"This function depends on the newest version of the '%s' apt package. "
+"Currently the newest version of this package is only included in the Debian "
+"package respository but not yet in the default Linux Mint repositories."
+msgstr ""
+
+#: 4.6/download-dialog-youtube-dl.py:39
+msgid "Do you want to proceed the Installation at your own risk?"
+msgstr ""
+
+#. 4.6->settings-schema.json->streamurl-button->tooltip
+#. 3.0->settings-schema.json->streamurl-button->tooltip
+msgid "Opens a website, which helps you to determine radio stream URLs."
+msgstr ""
+
+#. 4.6->settings-schema.json->initial-volume->tooltip
+msgid ""
+"The initial volume is applied when clicking on a radio stream and no other "
+"radio stream is already running"
+msgstr ""
+
+#. 4.6->settings-schema.json->music-download-dir-select->tooltip
+msgid ""
+"Songs downloaded from Youtube will be saved to this directory. This feature "
+"can be found in the right-click-menu of the applet"
+msgstr ""

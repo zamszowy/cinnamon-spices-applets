@@ -1,0 +1,27 @@
+# translation of weather@mockturtl.po to Icelandic
+# Copyright (C) 2022 Icelandic translations of Cinnamon applets
+# This file is distributed under the same license as the Cinnamon package.
+#
+# Sveinn í Felli <sv1@fellsnet.is>, 2012, 2014, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: weather@mockturtl\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-08 08:40+0100\n"
+"PO-Revision-Date: 2022-02-11 10:03+0000\n"
+"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
+"Language-Team: Icelandic\n"
+"Language: is\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 19.12.3\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: 3.8/weather-applet.js:15257
+msgid "Station Name: {stationName}"
+msgstr ""
+
+#: 3.8/weather-applet.js:15260
+msgid "Area: {stationArea}"
+msgstr ""

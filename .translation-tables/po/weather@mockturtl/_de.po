@@ -1,0 +1,245 @@
+# German translation originally for gnome-shell-extension-weather, now weather@mockturtl
+# Copyright (C) 2011 to 2019, Evilandi666 and Kghbln
+# This file is distributed under the same license as weather@mockturtl.
+# Evilandi666 <Evilandi.AUR@googlemail.com>, 2011.
+# Kghbln <kgh@kgh.info>, 2015, 2017, 2019.
+# michi <michi.schweitzer@gmail.com>, 2020.
+# Kim <kipuka@eclipso.eu>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: weather@mockturtl 2.6.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-08 08:40+0100\n"
+"PO-Revision-Date: 2021-04-02 09:38+0200\n"
+"Last-Translator: Kim <kipuka@eclipso.eu>\n"
+"Language-Team: \n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#: 3.0/climacell.js:248 3.8/weather-applet.js:11980
+msgid ""
+"Please Make sure you\n"
+"entered the API key that you have from Climacell"
+msgstr ""
+
+#: 3.0/darkSky.js:238 3.8/weather-applet.js:10282
+msgid ""
+"Please Make sure you\n"
+"entered the API key that you have from DarkSky"
+msgstr ""
+
+#: 3.8/weather-applet.js:9190
+msgid ""
+"Could not retrieve logs, log file was not found under path\n"
+" {logFilePath}"
+msgstr ""
+
+#: 3.8/weather-applet.js:9194
+msgid ""
+"Could not get contents of log file under path\n"
+" {logFilePath}"
+msgstr ""
+
+#: 3.8/weather-applet.js:9786
+msgid "Data was not found for location"
+msgstr ""
+
+#: 3.8/weather-applet.js:10248
+msgid "DarkSky"
+msgstr ""
+
+#: 3.8/weather-applet.js:10299
+msgid "This API has ceased to function, please use another one."
+msgstr ""
+
+#: 3.8/weather-applet.js:11526
+msgid "WeatherBit"
+msgstr ""
+
+#: 3.8/weather-applet.js:11949
+msgid "Tomorrow.io"
+msgstr ""
+
+#: 3.8/weather-applet.js:12273
+msgid "US Weather"
+msgstr ""
+
+#: 3.8/weather-applet.js:12824
+msgid "Visual Crossing"
+msgstr ""
+
+#: 3.8/weather-applet.js:13011
+msgid "Dust Storm"
+msgstr ""
+
+#: 3.8/weather-applet.js:13467
+msgid "AccuWeather"
+msgstr ""
+
+#: 3.8/weather-applet.js:14139
+msgid ""
+"Could not retrieve config, file was not found under path\n"
+" {configFilePath}"
+msgstr ""
+
+#: 3.8/weather-applet.js:14143
+msgid ""
+"Could not get contents of config file under path\n"
+" {configFilePath}"
+msgstr ""
+
+#: 3.8/weather-applet.js:14479
+msgid "Dew Point"
+msgstr ""
+
+#: 3.8/weather-applet.js:14813
+msgid "Forecast parsing failed, see logs for more details."
+msgstr ""
+
+#: 3.8/weather-applet.js:15253
+msgid "{distance} {distanceUnit} from you"
+msgstr ""
+
+#: 3.8/weather-applet.js:15257
+msgid "Station Name: {stationName}"
+msgstr ""
+
+#: 3.8/weather-applet.js:15260
+msgid "Area: {stationArea}"
+msgstr ""
+
+#: 3.8/weather-applet.js:15712 3.8/weather-applet.js:15722
+msgid "Error Saving Debug Information"
+msgstr ""
+
+#: 3.8/weather-applet.js:15733
+msgid "Debug Information saved successfully"
+msgstr ""
+
+#: 3.8/weather-applet.js:15733
+msgid "Saved to {filePath}"
+msgstr ""
+
+#: 3.8/LogSaver.py:16
+msgid "Save to File"
+msgstr ""
+
+#: 3.8/LogSaver.py:29
+msgid "Select a destination"
+msgstr ""
+
+#. 3.8->settings-schema.json->units-section->title
+msgid "Other Units"
+msgstr ""
+
+#. 3.8->settings-schema.json->temp-unit-section->title
+msgid "Temperature Unit"
+msgstr ""
+
+#. 3.8->settings-schema.json->debug-options->title
+#. 3.8->settings-schema.json->logLevel->options
+msgid "Debug"
+msgstr ""
+
+#. 3.8->settings-schema.json->dataService->options
+msgid "Tomorrow.io (key needed)"
+msgstr ""
+
+#. 3.8->settings-schema.json->dataService->options
+msgid "AccuWeather (key needed)"
+msgstr ""
+
+#. 3.8->settings-schema.json->saveLocation->tooltip
+msgid ""
+"Saves location information to file so you can switch between them with "
+"buttons in the applet, which will appear if you have more than one."
+msgstr ""
+
+#. 3.8->settings-schema.json->forecastDays->tooltip
+msgid ""
+"Maximum number of days that can be displayed, available number of data, "
+"maximum rows and columns setting in the Presentation tab will affect the "
+"final number."
+msgstr ""
+
+#. 3.8->settings-schema.json->forecastHours->tooltip
+msgid ""
+"Maximum number of hours that can be displayed, available numbers of data "
+"will affect the final number."
+msgstr ""
+
+#. 3.8->settings-schema.json->showBothTempUnits->description
+msgid "Show both temperature units at the same time"
+msgstr ""
+
+#. 3.8->settings-schema.json->tempTextOverride->tooltip
+msgid ""
+"Some of the available values are: {c} is condition, {t} is temperature and "
+"{u} is unit.\n"
+"Can be used if label does not fit on vertical panel, among other smart "
+"things."
+msgstr ""
+
+#. 3.8->settings-schema.json->alwaysShowHourlyWeather->description
+msgid "Always show Hourly Weather"
+msgstr ""
+
+#. 3.8->settings-schema.json->alwaysShowHourlyWeather->tooltip
+msgid ""
+"Hide/Show button will be hidden and Hourly weather will be permanently "
+"visible."
+msgstr ""
+
+#. 3.8->settings-schema.json->displayWindAsText->description
+msgid "Display wind direction as text"
+msgstr ""
+
+#. 3.8->settings-schema.json->displayWindAsText->tooltip
+msgid "Like SE, N instead of direction icons."
+msgstr ""
+
+#. 3.8->settings-schema.json->issue-reporting-explanation->description
+msgid ""
+"If you find an issue with this applet please make a report by clicking on "
+"the button below and login in with your Github account.\n"
+"\n"
+"Before you start writing please make sure that the issue is not already "
+"submitted in the issues section and review your prefilled details in the "
+"issue description. Don't forget to add a short description in the top Title "
+"field next to the applet's name to make it easier for everyone to know what "
+"the issue is about. Logs with Debug level (which can be saved to a file "
+"below) are also appreciated."
+msgstr ""
+
+#. 3.8->settings-schema.json->logLevel->description
+msgid "Log Level"
+msgstr ""
+
+#. 3.8->settings-schema.json->logLevel->tooltip
+msgid ""
+"Info is the regular logging, Debug is debug, and Verbose also logs network "
+"request payloads. Changing this will only be effective on future logs. Only "
+"change it you are instructed or you know what you are doing."
+msgstr ""
+
+#. 3.8->settings-schema.json->logLevel->options
+msgid "Verbose"
+msgstr ""
+
+#. 3.8->settings-schema.json->fileSelect->description
+msgid "Click Save to save debug information to a file"
+msgstr ""
+
+#. 3.8->settings-schema.json->fileSelect->tooltip
+msgid ""
+"This includes logs for the applet and the current settings with your API key "
+"redacted."
+msgstr ""
+
+#. 3.8->settings-schema.json->selectedLogPath->description
+msgid "Selected path to save Logs"
+msgstr ""
