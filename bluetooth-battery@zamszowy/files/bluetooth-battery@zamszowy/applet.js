@@ -21,6 +21,24 @@ const { SystemNotificationSource, Notification, Urgency } = imports.ui.messageTr
 
 var dbusCon;
 
+function get_upower_devices_indexes_sorted_by_power(devices) {
+    let sorted_devices_indexes = new Array();
+    for (let i=0; i < devices.length; i++) {
+        let max_index = null;
+        for (let j=0; j < devices.length; j++) {
+            if (sorted_devices_indexes.includes(j)) {
+                continue;
+            }
+            if (max_index === null || devices[j].percentage > devices[max_index].percentage) {
+                max_index = j;
+            }
+        }
+        sorted_devices_indexes.push(max_index);
+    }
+
+    return sorted_devices_indexes;
+}
+
 function BtBattery(metadata, orientation, panel_height, instance_id) {
     this._init(metadata, orientation, panel_height, instance_id);
 }
@@ -272,8 +290,10 @@ BtBattery.prototype = {
 
         var upowerClient = UPower.Client.new_full(null);
         var devices = upowerClient.get_devices();
-        for (let i=0; i < devices.length; i++) {
-            let dev = devices[i];
+
+        const sorted_devices_indexes = get_upower_devices_indexes_sorted_by_power(devices);
+        for (let i=0; i < sorted_devices_indexes.length; i++) {
+            let dev = devices[sorted_devices_indexes[i]];
 
             if ((!dev.model && !dev.serial) || this.blacklist_containes_active(dev)) {
                 // skip entirely blacklisted devices or the ones without model and serial
@@ -413,7 +433,7 @@ BtBattery.prototype = {
             }
 
             const dev = this.dbus_map.get(name).device;
-            if (lowest_bat_dev == null || dev.percentage < lowest_bat_dev.percentage) {
+            if (lowest_bat_dev == null || dev.percentage <= lowest_bat_dev.percentage) {
                 lowest_bat_dev = dev;
                 lowest_bat_dev_ident = name;
             }
