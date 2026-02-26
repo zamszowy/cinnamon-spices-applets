@@ -801,6 +801,9 @@ export default class BluetoothBatteryExtension extends Extension {
         this._settings = this.getSettings();
 
         this._indicators = [];
+        // Index of the first indicator's child in the panel rightBox. Used
+        // to insert subsequent instances next to the first one.
+        this._baseIndicatorIndex = null;
         this._instanceCountSignal = this._settings.connect(
             'changed::instance-count',
             () => this._syncIndicators()
@@ -814,7 +817,36 @@ export default class BluetoothBatteryExtension extends Extension {
         while (this._indicators.length < wanted) {
             const idx = this._indicators.length;
             const indicator = new Indicator(this, idx);
-            Main.panel.addToStatusArea(`${UUID}-${idx + 1}`, indicator);
+            // Insert new instances next to the first instance instead of
+            // appending them at the end of the panel. Record the index of
+            // the first indicator's child in `rightBox` by comparing the
+            // children list before/after the first `addToStatusArea` call,
+            // then use that base index for subsequent inserts.
+            try {
+                const rightBox = Main.panel._rightBox;
+                if (this._indicators.length === 0) {
+                    // First indicator: detect which child was added.
+                    const before = rightBox.get_children();
+                    Main.panel.addToStatusArea(`${UUID}-${idx + 1}`, indicator);
+                    const after = rightBox.get_children();
+                    for (let i = 0; i < after.length; i++) {
+                        if (!before.includes(after[i])) {
+                            this._baseIndicatorIndex = i;
+                            break;
+                        }
+                    }
+                    // Fallback: if not found, leave base index null.
+                } else if (this._baseIndicatorIndex !== null && this._baseIndicatorIndex >= 0) {
+                    const position = this._baseIndicatorIndex + idx;
+                    Main.panel.addToStatusArea(`${UUID}-${idx + 1}`, indicator, position);
+                } else {
+                    // If we couldn't determine the base index, fall back to
+                    // default behaviour (append) which preserves stability.
+                    Main.panel.addToStatusArea(`${UUID}-${idx + 1}`, indicator);
+                }
+            } catch (e) {
+                Main.panel.addToStatusArea(`${UUID}-${idx + 1}`, indicator);
+            }
             this._indicators.push(indicator);
         }
 
