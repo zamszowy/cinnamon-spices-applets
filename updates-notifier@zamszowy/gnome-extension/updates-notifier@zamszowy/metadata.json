@@ -1,0 +1,9 @@
+{
+    "name": "Updates Notifier",
+    "description": "Monitors pending updates via PackageKit D-Bus and shows a panel indicator with optional firmware support",
+    "uuid": "updates-notifier@zamszowy",
+    "version": 1,
+    "shell-version": ["45", "46", "47", "48", "49"],
+    "url": "https://github.com/linuxmint/cinnamon-spices-applets/tree/master/updates-notifier@zamszowy",
+    "settings-schema": "org.gnome.shell.extensions.updates-notifier"
+}

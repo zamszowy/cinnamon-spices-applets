@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.bluetooth-battery"
+          path="/org/gnome/shell/extensions/bluetooth-battery/">
+    <key name="enable-keyboards" type="b">
+      <default>true</default>
+    </key>
+    <key name="enable-mice" type="b">
+      <default>true</default>
+    </key>
+    <key name="enable-headphones" type="b">
+      <default>true</default>
+    </key>
+    <key name="enable-others" type="b">
+      <default>true</default>
+    </key>
+
+    <key name="applet-icon" type="s">
+      <choices>
+        <choice value="icon-text"/>
+        <choice value="icon"/>
+        <choice value="text"/>
+      </choices>
+      <default>'icon-text'</default>
+    </key>
+
+    <key name="icon-style" type="s">
+      <choices>
+        <choice value="dark"/>
+        <choice value="light"/>
+        <choice value="symbolic"/>
+      </choices>
+      <default>'light'</default>
+    </key>
+
+    <key name="show-secondary-indicator" type="b">
+      <default>false</default>
+    </key>
+
+    <key name="instance-count" type="i">
+      <range min="1" max="6"/>
+      <default>1</default>
+    </key>
+
+    <key name="instance-filters" type="as">
+      <default>["keyboards,mice,headphones,others"]</default>
+    </key>
+
+    <key name="instance-display-modes" type="as">
+      <default>["icon-text"]</default>
+    </key>
+
+    <key name="instance-override-enabled" type="as">
+      <default>["false"]</default>
+    </key>
+
+    <key name="instance-override-entries" type="as">
+      <default>[""]</default>
+    </key>
+
+    <key name="primary-filter-mode" type="s">
+      <choices>
+        <choice value="all"/>
+        <choice value="headphones"/>
+        <choice value="non-headphones"/>
+      </choices>
+      <default>'all'</default>
+    </key>
+
+    <key name="secondary-filter-mode" type="s">
+      <choices>
+        <choice value="all"/>
+        <choice value="headphones"/>
+        <choice value="non-headphones"/>
+      </choices>
+      <default>'headphones'</default>
+    </key>
+
+    <key name="blacklist" type="s">
+      <default>''</default>
+    </key>
+
+    <key name="override-enable" type="b">
+      <default>false</default>
+    </key>
+
+    <key name="override-entry" type="s">
+      <default>''</default>
+    </key>
+
+    <key name="available-devices" type="as">
+      <default>[]</default>
+    </key>
+
+    <key name="known-devices" type="as">
+      <default>[]</default>
+    </key>
+
+    <key name="notification-warn-enable" type="b">
+      <default>true</default>
+    </key>
+
+    <key name="notification-warn-level" type="i">
+      <range min="1" max="100"/>
+      <default>20</default>
+    </key>
+
+    <key name="notification-warn-test" type="i">
+      <default>0</default>
+    </key>
+
+    <key name="notification-crit-enable" type="b">
+      <default>true</default>
+    </key>
+
+    <key name="notification-crit-level" type="i">
+      <range min="1" max="100"/>
+      <default>10</default>
+    </key>
+
+    <key name="notification-crit-test" type="i">
+      <default>0</default>
+    </key>
+
+    <key name="notification-applet-icon" type="s">
+      <choices>
+        <choice value="always"/>
+        <choice value="warn"/>
+        <choice value="crit"/>
+      </choices>
+      <default>'always'</default>
+    </key>
+
+    <key name="notification-filter" type="i">
+      <range min="0" max="100"/>
+      <default>0</default>
+    </key>
+  </schema>
+</schemalist>

@@ -1,0 +1,10 @@
+{
+  "name": "Bluetooth Battery",
+  "description": "Shows battery levels of Bluetooth devices",
+  "uuid": "bluetooth-battery@zamszowy",
+  "version": 2,
+  "shell-version": ["45", "46", "47", "48", "49"],
+  "url": "https://github.com/linuxmint/cinnamon-spices-applets/tree/master/bluetooth-battery@zamszowy",
+  "settings-schema": "org.gnome.shell.extensions.bluetooth-battery",
+  "gettext-domain": "bluetooth-battery@zamszowy"
+}

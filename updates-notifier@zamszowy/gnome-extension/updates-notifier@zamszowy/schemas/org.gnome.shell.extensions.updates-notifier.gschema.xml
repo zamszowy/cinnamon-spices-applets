@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.updates-notifier"
+          path="/org/gnome/shell/extensions/updates-notifier/">
+
+    <!-- Behavior -->
+    <key name="update-refresh" type="i">
+      <default>60</default>
+      <summary>Refresh interval (minutes)</summary>
+      <description>Minutes to wait before automatically re-checking for updates.</description>
+    </key>
+
+    <key name="show-firmware" type="b">
+      <default>true</default>
+      <summary>Include firmware updates</summary>
+      <description>Show firmware updates provided by fwupdmgr (requires fwupdmgr and jq).</description>
+    </key>
+
+    <key name="show-window-on-click" type="b">
+      <default>false</default>
+      <summary>Open updates window on left-click</summary>
+      <description>When true, left-click opens the updates list window instead of the popup menu.</description>
+    </key>
+
+    <key name="refresh-when-no-updates" type="b">
+      <default>true</default>
+      <summary>Refresh on click when no updates</summary>
+      <description>When show-window-on-click is enabled and there are no updates, left-click triggers a refresh instead of opening an empty window.</description>
+    </key>
+
+    <key name="command-update-show" type="b">
+      <default>true</default>
+      <summary>Show "Check for new updates" menu entry</summary>
+    </key>
+
+    <key name="command-upgrade-show" type="b">
+      <default>true</default>
+      <summary>Show "Upgrade packages" menu entry</summary>
+    </key>
+
+    <key name="command-upgrade" type="s">
+      <default>'pkcon update; echo Done; read'</default>
+      <summary>Upgrade command</summary>
+      <description>Shell command executed when the user triggers a package upgrade from the menu.</description>
+    </key>
+
+    <!-- Appearance -->
+    <key name="hide-applet" type="b">
+      <default>false</default>
+      <summary>Hide indicator when no updates</summary>
+    </key>
+
+    <key name="different-levels" type="b">
+      <default>true</default>
+      <summary>Use different icons for update count levels</summary>
+    </key>
+
+    <key name="level-1" type="i">
+      <default>100</default>
+      <summary>Low-level threshold</summary>
+      <description>Show the "low" icon when pending updates count is below this value.</description>
+    </key>
+
+    <key name="level-2" type="i">
+      <default>200</default>
+      <summary>Medium-level threshold</summary>
+      <description>Show the "medium" icon when pending updates count is below this value (and above level-1). Show "high" above this value.</description>
+    </key>
+
+    <key name="show-label" type="b">
+      <default>false</default>
+      <summary>Show update count label</summary>
+    </key>
+
+    <key name="label-font-size" type="i">
+      <range min="1" max="200"/>
+      <default>90</default>
+      <summary>Label font size (%)</summary>
+    </key>
+
+    <key name="label-font-weight" type="i">
+      <range min="100" max="1000"/>
+      <default>300</default>
+      <summary>Label font weight</summary>
+    </key>
+
+    <key name="label-vertical-position" type="i">
+      <range min="-20" max="20"/>
+      <default>10</default>
+      <summary>Label vertical position offset (px)</summary>
+    </key>
+
+    <key name="icon-style" type="s">
+      <choices>
+        <choice value="dark"/>
+        <choice value="light"/>
+        <choice value="symbolic"/>
+      </choices>
+      <default>'light'</default>
+      <summary>Icon colour style</summary>
+    </key>
+
+  </schema>
+</schemalist>
