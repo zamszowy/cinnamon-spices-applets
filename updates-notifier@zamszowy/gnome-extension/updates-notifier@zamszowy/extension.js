@@ -96,6 +96,10 @@ class UpdatesIndicator extends PanelMenu.Button {
         this._propertiesChangedSubscription  = null;
         this._refreshTimeoutId               = null;
         this._settingsConnIds                = [];
+        this._tooltipSignals                 = [];
+        this._tooltipShowTimeoutId           = null;
+        this._hoverTooltipText               = '';
+        this._customTooltip                  = null;
 
         this._bus = Gio.DBus.system;
 
@@ -103,10 +107,95 @@ class UpdatesIndicator extends PanelMenu.Button {
         this._setIcon('update-notifier-settings-symbolic');
         this._label.hide();
 
+        this._initCustomTooltip();
         this._connectSettings();
         this._watchDbus();
         this._setCheckInterval();
         this._refreshUpdatesInfo();
+    }
+
+    // ── Tooltip ───────────────────────────────────────────────────────────
+
+    _initCustomTooltip() {
+        this._customTooltip = new St.Label({
+            style_class: 'dash-label',
+            text: '',
+            visible: false,
+            opacity: 0,
+        });
+        Main.layoutManager.addChrome(this._customTooltip);
+
+        this._tooltipSignals.push([
+            this,
+            this.connect('enter-event', () => this._scheduleTooltipShow()),
+        ]);
+
+        this._tooltipSignals.push([
+            this,
+            this.connect('leave-event', () => this._hideCustomTooltip()),
+        ]);
+
+        this._tooltipSignals.push([
+            this.menu,
+            this.menu.connect('open-state-changed', (_menu, isOpen) => {
+                if (isOpen)
+                    this._hideCustomTooltip();
+            }),
+        ]);
+    }
+
+    _scheduleTooltipShow() {
+        this._hideCustomTooltip(false);
+
+        if (!this._hoverTooltipText)
+            return;
+
+        this._tooltipShowTimeoutId = GLib.timeout_add(
+            GLib.PRIORITY_DEFAULT,
+            250,
+            () => {
+                this._tooltipShowTimeoutId = null;
+                this._showCustomTooltip();
+                return GLib.SOURCE_REMOVE;
+            }
+        );
+    }
+
+    _showCustomTooltip() {
+        if (!this._customTooltip || !this._hoverTooltipText || this.menu?.isOpen)
+            return;
+
+        this._customTooltip.text = this._hoverTooltipText;
+        this._customTooltip.show();
+        this._customTooltip.opacity = 255;
+
+        const [stageX, stageY] = this.get_transformed_position();
+        const actorWidth = this.width;
+        const [minWidth, natWidth] = this._customTooltip.get_preferred_width(-1);
+        const [, natHeight] = this._customTooltip.get_preferred_height(-1);
+        const tooltipWidth = Math.max(minWidth, natWidth);
+        const stageWidth = global.stage.width;
+
+        let x = Math.round(stageX + actorWidth / 2 - tooltipWidth / 2);
+        x = Math.max(4, Math.min(x, stageWidth - tooltipWidth - 4));
+
+        const panelBottom = Math.round(stageY + this.height);
+        const y = panelBottom + 6;
+
+        this._customTooltip.set_position(x, y);
+    }
+
+    _hideCustomTooltip(removeTimeout = true) {
+        if (removeTimeout && this._tooltipShowTimeoutId) {
+            GLib.source_remove(this._tooltipShowTimeoutId);
+            this._tooltipShowTimeoutId = null;
+        }
+
+        if (!this._customTooltip)
+            return;
+
+        this._customTooltip.opacity = 0;
+        this._customTooltip.hide();
     }
 
     // ── Settings wiring ────────────────────────────────────────────────────
@@ -398,6 +487,15 @@ class UpdatesIndicator extends PanelMenu.Button {
             this._label.hide();
         }
 
+        // Tooltip
+        if (this._hasError) {
+            this._hoverTooltipText = _('Error checking for updates');
+        } else if (count === 0) {
+            this._hoverTooltipText = _('No updates available');
+        } else {
+            this._hoverTooltipText = _('%d updates available').format(count);
+        }
+
         this._buildMenu();
     }
 
@@ -525,6 +623,19 @@ class UpdatesIndicator extends PanelMenu.Button {
 
         for (const id of this._settingsConnIds)
             this._settings.disconnect(id);
+
+        for (const [obj, signalId] of this._tooltipSignals) {
+            if (obj && signalId)
+                obj.disconnect(signalId);
+        }
+        this._tooltipSignals = [];
+
+        this._hideCustomTooltip();
+        if (this._customTooltip) {
+            Main.layoutManager.removeChrome(this._customTooltip);
+            this._customTooltip.destroy();
+            this._customTooltip = null;
+        }
 
         super.destroy();
     }
