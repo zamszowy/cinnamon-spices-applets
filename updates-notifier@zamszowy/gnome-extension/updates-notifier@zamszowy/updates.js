@@ -6,8 +6,12 @@
 // PackageKitGlib GI typelib is not required at runtime.
 
 // ---------------------------------------------------------------------------
-// PackageKit PkInfoEnum constants (from pk-enum.h)
+// PackageKit constants
 // ---------------------------------------------------------------------------
+
+// PkRoleEnum – only the value we care about
+const PK_ROLE_GET_UPDATES = 9;
+
 const PkInfo = Object.freeze({
     UNKNOWN:      0,
     INSTALLED:    1,
@@ -77,17 +81,53 @@ export class Updates {
     constructor() {
         /** @type {Map<string, object>} */
         this.map = new Map();
+
+        // D-Bus object paths of PackageKit transactions whose Role was reported as
+        // PK_ROLE_ENUM_GET_UPDATES (9).  On backends like Fedora/DNF, updates are
+        // emitted with PkInfo.AVAILABLE on those transactions instead of an update
+        // variant, so we use the role to distinguish them from the generic package list.
+        /** @type {Set<string>} */
+        this._getUpdatesPaths = new Set();
+    }
+
+    /**
+     * Record the role of a PackageKit transaction D-Bus object path.
+     * Should be called from the org.freedesktop.DBus.Properties.PropertiesChanged
+     * signal handler whenever the 'Role' property changes.
+     *
+     * @param {string} path     D-Bus object path, e.g. '/3682_bdddcace'
+     * @param {number} roleVal  Numeric PkRoleEnum value
+     */
+    recordRole(path, roleVal) {
+        if (roleVal === PK_ROLE_GET_UPDATES)
+            this._getUpdatesPaths.add(path);
     }
 
     /**
      * Record one update package from a PackageKit D-Bus Package/Packages signal.
      * Returns true when the map entry was modified (triggers a UI refresh).
+     *
+     * @param {number} info     PkInfoEnum value from the D-Bus signal
+     * @param {string} pkgid    PackageKit package-id string
+     * @param {string} summary  Package summary / description
+     * @param {string|null} path  D-Bus object path of the owning transaction.
+     *   When the path was previously registered via recordRole() with
+     *   Role=GET_UPDATES, AVAILABLE packages are treated as real updates.
+     *   This is needed on Fedora/DNF where pending updates are reported as
+     *   AVAILABLE rather than an update variant.
      */
-    add(info, pkgid, summary) {
+    add(info, pkgid, summary, path = null) {
         const [state, infoStr] = decodeUpdateState(info);
+        const forceUpdate = path !== null && this._getUpdatesPaths.has(path);
 
-        // BLOCKED / AVAILABLE rows are not ready-to-install; skip them.
-        if (state === UpdateState.BLOCKED || state === UpdateState.AVAILABLE)
+        // BLOCKED rows are never ready-to-install; always skip.
+        if (state === UpdateState.BLOCKED)
+            return false;
+
+        // AVAILABLE rows are normally skipped (installable packages, not updates).
+        // Exception: the transaction had Role=GetUpdates(9), meaning the backend is
+        // intentionally reporting these as updates (common on Fedora/DNF).
+        if (state === UpdateState.AVAILABLE && !forceUpdate)
             return false;
 
         const tokens = pkgid.split(';');
@@ -115,6 +155,10 @@ export class Updates {
             type: infoStr,
             description: summary,
         });
+        // For forced-AVAILABLE entries there will be no subsequent INSTALLED row
+        // to return true, so return true here to ensure _pendingUpdate is set and
+        // the Finished handler triggers a UI refresh.
+        // return state === UpdateState.AVAILABLE;
         return false;
     }
 

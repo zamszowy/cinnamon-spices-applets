@@ -91,10 +91,11 @@ class UpdatesIndicator extends PanelMenu.Button {
         this._hasFirmwareUpdates = false;
         this._hasError         = false;
 
-        this._packageSubscription      = null;
-        this._updateChangedSubscription = null;
-        this._refreshTimeoutId         = null;
-        this._settingsConnIds          = [];
+        this._packageSubscription           = null;
+        this._updateChangedSubscription      = null;
+        this._propertiesChangedSubscription  = null;
+        this._refreshTimeoutId               = null;
+        this._settingsConnIds                = [];
 
         this._bus = Gio.DBus.system;
 
@@ -137,18 +138,44 @@ class UpdatesIndicator extends PanelMenu.Button {
     // ── D-Bus subscriptions ────────────────────────────────────────────────
 
     _watchDbus() {
+        // Watch PropertiesChanged to learn each transaction's Role before packages
+        // arrive.  The Updates instance records which paths have Role=GET_UPDATES so
+        // it can treat AVAILABLE packages on those paths as real updates (Fedora/DNF).
+        this._propertiesChangedSubscription = this._bus.signal_subscribe(
+            'org.freedesktop.PackageKit',
+            'org.freedesktop.DBus.Properties',
+            'PropertiesChanged',
+            null, null,
+            Gio.DBusSignalFlags.NONE,
+            (_conn, _sender, path, _iface, _signal, params) => {
+                try {
+                    const unpacked = params.deep_unpack();
+                    // Signature: (sa{sv}as) – interface, changed-props, invalidated
+                    if (unpacked[0] !== 'org.freedesktop.PackageKit.Transaction') return;
+                    const changed = unpacked[1];
+                    if (!('Role' in changed)) return;
+                    const roleVal = typeof changed['Role'] === 'number'
+                        ? changed['Role']
+                        : changed['Role'].unpack?.() ?? changed['Role'].get_uint32?.();
+                    this._updates.recordRole(path, roleVal);
+                } catch (e) {
+                    console.warn(`${UUID}: PropertiesChanged unpack error: ${e}`);
+                }
+            }
+        );
+
         // Listen to all PackageKit transaction signals (Package, Packages, Finished).
         this._packageSubscription = this._bus.signal_subscribe(
             'org.freedesktop.PackageKit',
             'org.freedesktop.PackageKit.Transaction',
             null, null, null,
             Gio.DBusSignalFlags.NONE,
-            (_conn, _sender, _path, _iface, signal, params) => {
+            (_conn, _sender, path, _iface, signal, params) => {
                 if (!this._checkingInProgress) return;
 
                 if (signal === 'Package' || signal === 'Packages') {
                     for (const [info, pkgid, summary] of unpackPackageSignal(params)) {
-                        if (this._updates.add(info, pkgid, summary))
+                        if (this._updates.add(info, pkgid, summary, path))
                             this._pendingUpdate = true;
                     }
                 } else if (signal === 'Finished') {
@@ -492,6 +519,9 @@ class UpdatesIndicator extends PanelMenu.Button {
 
         if (this._updateChangedSubscription !== null)
             this._bus.signal_unsubscribe(this._updateChangedSubscription);
+
+        if (this._propertiesChangedSubscription !== null)
+            this._bus.signal_unsubscribe(this._propertiesChangedSubscription);
 
         for (const id of this._settingsConnIds)
             this._settings.disconnect(id);
