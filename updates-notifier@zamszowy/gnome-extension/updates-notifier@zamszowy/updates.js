@@ -5,35 +5,42 @@
 // All PackageKit info-enum constants are hard-coded here so that the optional
 // PackageKitGlib GI typelib is not required at runtime.
 
-// ---------------------------------------------------------------------------
-// PackageKit constants
-// ---------------------------------------------------------------------------
-
 // PkRoleEnum – only the value we care about
 const PK_ROLE_GET_UPDATES = 9;
 
 const PkInfo = Object.freeze({
-    UNKNOWN:      0,
-    INSTALLED:    1,
-    AVAILABLE:    2,
-    LOW:          3,
-    ENHANCEMENT:  4,
-    NORMAL:       5,
-    BUGFIX:       6,
-    IMPORTANT:    7,
-    SECURITY:     8,
-    BLOCKED:      9,
-    DOWNLOADING:  10,
-    UPDATING:     11,
-    INSTALLING:   12,
-    REMOVING:     13,
-    CLEANUP:      14,
-    OBSOLETING:   15,
-    FINISHED:     18,
+    UNKNOWN: 0,
+    INSTALLED: 1,
+    AVAILABLE: 2,
+    LOW: 3,
+    ENHANCEMENT: 4,
+    NORMAL: 5,
+    BUGFIX: 6,
+    IMPORTANT: 7,
+    SECURITY: 8,
+    BLOCKED: 9,
+    DOWNLOADING: 10,
+    UPDATING: 11,
+    INSTALLING: 12,
+    REMOVING: 13,
+    CLEANUP: 14,
+    OBSOLETING: 15,
+    COLLECTION_INSTALLED: 16,
+    COLLECTION_AVAILABLE: 17,
+    FINISHED: 18,
     REINSTALLING: 19,
-    DOWNGRADING:  20,
-    UNTRUSTED:    23,
-    TRUSTED:      24,
+    DOWNGRADING: 20,
+    PREPARING: 21,
+    DECOMPRESSING: 22,
+    UNTRUSTED: 23,
+    TRUSTED: 24,
+    UNAVAILABLE: 25,
+    CRITICAL: 26,
+    INSTALL: 27,
+    REMOVE: 28,
+    OBSOLETE: 29,
+    DOWNGRADE: 30,
+    LAST: 31,
 });
 
 // Reverse-lookup: integer → human-readable label stored in the updates file.
@@ -42,22 +49,21 @@ const PkInfoLabel = Object.freeze(
 );
 
 export const UpdateState = Object.freeze({
-    BLOCKED:   'blocked',
+    BLOCKED: 'blocked',
     INSTALLED: 'installed',
     AVAILABLE: 'available',
-    OTHER:     'other',
+    OTHER: 'other',
 });
 
-/**
- * Decode a raw PackageKit info-enum integer into [UpdateState, labelString].
- * Handles backends that pack the real value in the low/high 16-bit words.
- */
+
+// Decode a raw PackageKit info-enum integer into [UpdateState, labelString].
+// Handles backends that pack the real value in the low/high 16-bit words.
 export function decodeUpdateState(code) {
     const tryDecode = (val) => {
         const label = PkInfoLabel[val];
         if (!label) return null;
         let state = UpdateState.OTHER;
-        if (val === PkInfo.BLOCKED)        state = UpdateState.BLOCKED;
+        if (val === PkInfo.BLOCKED) state = UpdateState.BLOCKED;
         else if (val === PkInfo.INSTALLED) state = UpdateState.INSTALLED;
         else if (val === PkInfo.AVAILABLE) state = UpdateState.AVAILABLE;
         return [state, label];
@@ -72,10 +78,6 @@ export function decodeUpdateState(code) {
     }
     return res ?? [UpdateState.OTHER, UpdateState.OTHER];
 }
-
-// ---------------------------------------------------------------------------
-// Updates – in-memory update catalogue
-// ---------------------------------------------------------------------------
 
 export class Updates {
     constructor() {
@@ -155,10 +157,6 @@ export class Updates {
             type: infoStr,
             description: summary,
         });
-        // For forced-AVAILABLE entries there will be no subsequent INSTALLED row
-        // to return true, so return true here to ensure _pendingUpdate is set and
-        // the Finished handler triggers a UI refresh.
-        // return state === UpdateState.AVAILABLE;
         return false;
     }
 

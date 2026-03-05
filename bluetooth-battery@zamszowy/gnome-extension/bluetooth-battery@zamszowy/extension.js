@@ -125,7 +125,6 @@ class Indicator extends PanelMenu.Button {
         const [minWidth, natWidth] = this._customTooltip.get_preferred_width(-1);
         const [, natHeight] = this._customTooltip.get_preferred_height(-1);
         const tooltipWidth = Math.max(minWidth, natWidth);
-        const tooltipHeight = natHeight;
         const stageWidth = global.stage.width;
 
         let x = Math.round(stageX + actorWidth / 2 - tooltipWidth / 2);
@@ -295,6 +294,8 @@ class Indicator extends PanelMenu.Button {
             if ((!dev.model && !dev.serial) || this._blacklistContainsActive(dev))
                 continue;
 
+            // blacklist by default non mouse/kb/phone/gaming input/mediaplayer/headphones devices
+            // and then skip them (if not active in the blacklist)
             if (!this._isKnownDeviceKind(dev.kind)) {
                 if (!this._blacklistContainsInactive(dev)) {
                     this._blacklistAdd(dev, true);

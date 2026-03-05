@@ -11,8 +11,6 @@ export default class UpdatesNotifierPreferences extends ExtensionPreferences {
         const s = this.getSettings();
         window.set_default_size(640, 640);
 
-        // ── Helpers ────────────────────────────────────────────────────────
-
         /** Adw.SwitchRow bound to a boolean GSettings key. */
         const switchRow = (title, subtitle, key) => {
             const row = new Adw.SwitchRow({ title, subtitle: subtitle ?? '' });

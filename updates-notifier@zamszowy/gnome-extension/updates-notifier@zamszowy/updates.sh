@@ -7,15 +7,16 @@ set -u
 DIR=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
 readonly DIR
 
-# ---------------------------------------------------------------------------
-# Detect the best available PackageKit CLI tool.
-# ---------------------------------------------------------------------------
+# some distos ship pkgcli (Debian), some pkgctl (Fedora), others could ship only pkcon.
 PKG_TOOL=""
-if   command -v pkgcli &>/dev/null; then PKG_TOOL=pkgcli
-elif command -v pkgctl &>/dev/null; then PKG_TOOL=pkgctl
-elif command -v pkcon  &>/dev/null; then PKG_TOOL=pkcon
+if command -v pkgcli &>/dev/null; then
+    PKG_TOOL=pkgcli
+elif command -v pkgctl &>/dev/null; then
+    PKG_TOOL=pkgctl
+elif command -v pkcon &>/dev/null; then
+    PKG_TOOL=pkcon
 else
-    echo "No suitable package manager found (pkgcli, pkgctl, pkcon)" > "$DIR/error"
+    echo "No suitable package manager found (pkgcli, pkgctl, pkcon)" >"$DIR/error"
     echo "ERROR"
     exit 0
 fi
@@ -23,37 +24,33 @@ readonly PKG_TOOL
 
 pkg_refresh() {
     case "$PKG_TOOL" in
-        pkgcli|pkgctl) pkgcli -q refresh ;;
-        pkcon)         pkcon refresh ;;
+    pkgcli | pkgctl) $PKG_TOOL -q refresh ;;
+    pkcon) $PKG_TOOL refresh ;;
     esac
 }
 
 pkg_list_updates() {
     case "$PKG_TOOL" in
-        pkgcli|pkgctl) pkgcli -q list-updates ;;
-        pkcon)
-            pkcon get-updates
-            local ret=$?
-            [[ $ret -eq 5 ]] && ret=0   # exit 5 = "no updates" is not an error
-            return $ret
-            ;;
+    pkgcli | pkgctl) $PKG_TOOL -q list-updates ;;
+    pkcon)
+        $PKG_TOOL get-updates
+        local ret=$?
+        [[ $ret -eq 5 ]] && ret=0 # exit 5 = "no updates" is not an error
+        return $ret
+        ;;
     esac
 }
 
 pkg_list_installed() {
     case "$PKG_TOOL" in
-        pkgcli|pkgctl) pkgcli -q -f installed list ;;
-        pkcon)         pkcon get-packages --filter installed ;;
+    pkgcli | pkgctl) $PKG_TOOL -q -f installed list ;;
+    pkcon) $PKG_TOOL get-packages --filter installed ;;
     esac
 }
 
-# ---------------------------------------------------------------------------
-# Open a terminal and run an arbitrary shell command inside it.
-# Tries (in order): xdg-terminal-exec, ptyxis, gnome-terminal, xterm.
-# ---------------------------------------------------------------------------
 open_terminal() {
     local cmd="$1"
-    if   command -v xdg-terminal-exec &>/dev/null; then
+    if command -v xdg-terminal-exec &>/dev/null; then
         xdg-terminal-exec bash -c "$cmd"
     elif command -v ptyxis &>/dev/null; then
         ptyxis -- bash -c "$cmd"
@@ -62,17 +59,15 @@ open_terminal() {
     elif command -v xterm &>/dev/null; then
         xterm -e bash -c "$cmd"
     else
-        notify-send "Updates Notifier" \
-            "No supported terminal found.  Please install ptyxis or gnome-terminal." \
-            --icon=dialog-error 2>/dev/null || true
+        if command -v notify-send; then
+            notify-send "Updates Notifier" \
+                "No supported terminal found.  Please install ptyxis or gnome-terminal." \
+                --icon=dialog-error 2>/dev/null || true
+        fi
     fi
 }
 
-# ---------------------------------------------------------------------------
-# Subcommands
-# ---------------------------------------------------------------------------
 case "$1" in
-
 check)
     refreshMode="${2:-updates}"
 
@@ -82,22 +77,22 @@ check)
     fi
 
     if ! out=$(pkg_list_updates 2>&1); then
-        printf '%s\n' "$out" > "$DIR/error"
+        printf '%s\n' "$out" >"$DIR/error"
         echo "ERROR"
         exit 0
     fi
 
     # Also query installed packages so the D-Bus signal stream includes the
     # local-version rows (PkInfoEnum.INSTALLED) for each pending update.
-    pkg_list_installed &>/dev/null &
+    pkg_list_installed &>/dev/null
 
     # Optional firmware updates via fwupdmgr + jq.
     if command -v fwupdmgr &>/dev/null && command -v jq &>/dev/null; then
         if [[ "$refreshMode" == "updates" ]]; then
             fwupdmgr refresh --no-authenticate &>/dev/null
         fi
-        fwupdmgr get-updates --no-authenticate --json 2>/dev/null \
-            | jq -r '
+        fwupdmgr get-updates --no-authenticate --json 2>/dev/null |
+            jq -r '
                 .Devices[]?
                 | select((.Releases | length) > 0)
                 | . as $d

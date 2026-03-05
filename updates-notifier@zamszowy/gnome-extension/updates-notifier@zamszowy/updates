@@ -1,97 +1,24 @@
-0#bsdextrautils#bsdextrautils;2.41.3-4;amd64;debian-testing-main#2.41.3-4#2.41.3-3#amd64#debian-testing-main#normal#extra utilities from 4.4BSD-Lite
-0#bsdutils#bsdutils;1:2.41.3-4;amd64;debian-testing-main#1:2.41.3-4#1:2.41.3-3#amd64#debian-testing-main#normal#basic utilities from 4.4BSD-Lite
-0#dbus#dbus;1.16.2-4;amd64;debian-testing-main#1.16.2-4#1.16.2-3#amd64#debian-testing-main#normal#simple interprocess messaging system (system message bus)
-0#dbus-bin#dbus-bin;1.16.2-4;amd64;debian-testing-main#1.16.2-4#1.16.2-3#amd64#debian-testing-main#normal#simple interprocess messaging system (command line utilities)
-0#dbus-daemon#dbus-daemon;1.16.2-4;amd64;debian-testing-main#1.16.2-4#1.16.2-3#amd64#debian-testing-main#normal#simple interprocess messaging system (reference message bus)
-0#dbus-session-bus-common#dbus-session-bus-common;1.16.2-4;all;debian-testing-main#1.16.2-4#1.16.2-3#all#debian-testing-main#normal#simple interprocess messaging system (session bus configuration)
-0#dbus-system-bus-common#dbus-system-bus-common;1.16.2-4;all;debian-testing-main#1.16.2-4#1.16.2-3#all#debian-testing-main#normal#simple interprocess messaging system (system bus configuration)
-0#dbus-user-session#dbus-user-session;1.16.2-4;amd64;debian-testing-main#1.16.2-4#1.16.2-3#amd64#debian-testing-main#normal#simple interprocess messaging system (systemd --user integration)
-0#docker-compose-plugin#docker-compose-plugin;5.1.0-1~debian.13~trixie;amd64;docker-trixie-stable#5.1.0-1~debian.13~trixie#5.0.2-1~debian.13~trixie#amd64#docker-trixie-stable#normal#Docker Compose (V2) plugin for the Docker CLI.
-0#eject#eject;2.41.3-4;amd64;debian-testing-main#2.41.3-4#2.41.3-3#amd64#debian-testing-main#normal#ejects CDs and operates CD-Changers under Linux
-0#fdisk#fdisk;2.41.3-4;amd64;debian-testing-main#2.41.3-4#2.41.3-3#amd64#debian-testing-main#normal#collection of partitioning utilities
-0#firmware-linux-free#firmware-linux-free;20241210-3;all;debian-testing-main#20241210-3#20241210-2#all#debian-testing-main#normal#Binary firmware for various drivers in the Linux kernel
-0#gimp#gimp;3.2.0~RC2-3.3;amd64;debian-testing-main#3.2.0~RC2-3.3#3.2.0~RC2-3.1#amd64#debian-testing-main#normal#GNU Image Manipulation Program
-0#gimp-data#gimp-data;3.2.0~RC2-3.3;all;debian-testing-main#3.2.0~RC2-3.3#3.2.0~RC2-3.1#all#debian-testing-main#normal#Data files for GIMP
-0#gir1.2-gimp-3.0#gir1.2-gimp-3.0;3.2.0~RC2-3.3;amd64;debian-testing-main#3.2.0~RC2-3.3#3.2.0~RC2-3.1#amd64#debian-testing-main#normal#Introspection data for the GIMP library
-0#gir1.2-harfbuzz-0.0#gir1.2-harfbuzz-0.0;12.3.2-2;amd64;debian-testing-main#12.3.2-2#12.3.2-1#amd64#debian-testing-main#normal#OpenType text shaping engine (GObject introspection data)
-0#gnome-software#gnome-software;50~beta-1;amd64;debian-testing-main#50~beta-1#49.3-1#amd64#debian-testing-main#normal#Software Center for GNOME
-0#gnome-software-common#gnome-software-common;50~beta-1;all;debian-testing-main#50~beta-1#49.3-1#all#debian-testing-main#normal#Software Center for GNOME (common files)
-0#gnome-software-plugin-deb#gnome-software-plugin-deb;50~beta-1;amd64;debian-testing-main#50~beta-1#49.3-1#amd64#debian-testing-main#normal#.deb support for GNOME Software
-0#gnome-software-plugin-fwupd#gnome-software-plugin-fwupd;50~beta-1;amd64;debian-testing-main#50~beta-1#49.3-1#amd64#debian-testing-main#normal#Firmware updater support for GNOME Software
-0#gnome-user-docs#gnome-user-docs;50~beta-1;all;debian-testing-main#50~beta-1#49.1-1#all#debian-testing-main#normal#GNOME Help
-0#gvfs#gvfs;1.59.1-1;amd64;debian-testing-main#1.59.1-1#1.58.0-2#amd64#debian-testing-main#normal#userspace virtual filesystem - GIO module
-0#gvfs-backends#gvfs-backends;1.59.1-1;amd64;debian-testing-main#1.59.1-1#1.58.0-2#amd64#debian-testing-main#normal#userspace virtual filesystem - backends
-0#gvfs-common#gvfs-common;1.59.1-1;all;debian-testing-main#1.59.1-1#1.58.0-2#all#debian-testing-main#normal#userspace virtual filesystem - common data files
-0#gvfs-daemons#gvfs-daemons;1.59.1-1;amd64;debian-testing-main#1.59.1-1#1.58.0-2#amd64#debian-testing-main#normal#userspace virtual filesystem - servers
-0#gvfs-fuse#gvfs-fuse;1.59.1-1;amd64;debian-testing-main#1.59.1-1#1.58.0-2#amd64#debian-testing-main#normal#userspace virtual filesystem - fuse server
-0#gvfs-libs#gvfs-libs;1.59.1-1;amd64;debian-testing-main#1.59.1-1#1.58.0-2#amd64#debian-testing-main#normal#userspace virtual filesystem - private libraries
-0#heif-gdk-pixbuf#heif-gdk-pixbuf;1.21.2-3;amd64;debian-testing-main#1.21.2-3#1.21.2-2#amd64#debian-testing-main#normal#HEIF and AVIF file format decoder and encoder - gdk-pixbuf loader
-0#heif-thumbnailer#heif-thumbnailer;1.21.2-3;amd64;debian-testing-main#1.21.2-3#1.21.2-2#amd64#debian-testing-main#normal#HEIF and AVIF file format decoder and encoder - thumbnailer
-0#libamd3#libamd3;1:7.12.2+dfsg-1;amd64;debian-testing-main#1:7.12.2+dfsg-1#1:7.12.1+dfsg-1#amd64#debian-testing-main#normal#approximate minimum degree ordering library for sparse matrices
-0#libblkid1#libblkid1;2.41.3-4;amd64;debian-testing-main#2.41.3-4#2.41.3-3#amd64#debian-testing-main#normal#block device ID library
-0#libbrlapi0.8#libbrlapi0.8;6.9-2;amd64;debian-testing-main#6.9-2#6.8-5#amd64#debian-testing-main#normal#braille display access via BRLTTY - shared library
-0#libcamd3#libcamd3;1:7.12.2+dfsg-1;amd64;debian-testing-main#1:7.12.2+dfsg-1#1:7.12.1+dfsg-1#amd64#debian-testing-main#normal#symmetric approximate minimum degree library for sparse matrices
-0#libccolamd3#libccolamd3;1:7.12.2+dfsg-1;amd64;debian-testing-main#1:7.12.2+dfsg-1#1:7.12.1+dfsg-1#amd64#debian-testing-main#normal#constrained column approximate library for sparse matrices
-0#libcholmod5#libcholmod5;1:7.12.2+dfsg-1;amd64;debian-testing-main#1:7.12.2+dfsg-1#1:7.12.1+dfsg-1#amd64#debian-testing-main#normal#sparse Cholesky factorization library for sparse matrices
-0#libcolamd3#libcolamd3;1:7.12.2+dfsg-1;amd64;debian-testing-main#1:7.12.2+dfsg-1#1:7.12.1+dfsg-1#amd64#debian-testing-main#normal#column approximate minimum degree ordering library for sparse matrices
-0#libdbus-1-3#libdbus-1-3;1.16.2-4;amd64;debian-testing-main#1.16.2-4#1.16.2-3#amd64#debian-testing-main#normal#simple interprocess messaging system (library)
-0#libfdisk1#libfdisk1;2.41.3-4;amd64;debian-testing-main#2.41.3-4#2.41.3-3#amd64#debian-testing-main#normal#fdisk partitioning library
-0#libgimp-3.0-0#libgimp-3.0-0;3.2.0~RC2-3.3;amd64;debian-testing-main#3.2.0~RC2-3.3#3.2.0~RC2-3.1#amd64#debian-testing-main#normal#Libraries for the GNU Image Manipulation Program
-0#libharfbuzz-gobject0#libharfbuzz-gobject0;12.3.2-2;amd64;debian-testing-main#12.3.2-2#12.3.2-1#amd64#debian-testing-main#normal#OpenType text shaping engine ICU backend (GObject library)
-0#libharfbuzz-icu0#libharfbuzz-icu0;12.3.2-2;amd64;debian-testing-main#12.3.2-2#12.3.2-1#amd64#debian-testing-main#normal#OpenType text shaping engine ICU backend
-0#libharfbuzz-subset0#libharfbuzz-subset0;12.3.2-2;amd64;debian-testing-main#12.3.2-2#12.3.2-1#amd64#debian-testing-main#normal#OpenType text shaping engine (subset library)
-0#libharfbuzz0b#libharfbuzz0b;12.3.2-2;amd64;debian-testing-main#12.3.2-2#12.3.2-1#amd64#debian-testing-main#normal#OpenType text shaping engine (shared library)
-0#libheif-plugin-aomenc#libheif-plugin-aomenc;1.21.2-3;amd64;debian-testing-main#1.21.2-3#1.21.2-2#amd64#debian-testing-main#normal#HEIF and AVIF file format decoder and encoder - aomenc plugin
-0#libheif-plugin-dav1d#libheif-plugin-dav1d;1.21.2-3;amd64;debian-testing-main#1.21.2-3#1.21.2-2#amd64#debian-testing-main#normal#HEIF and AVIF file format decoder and encoder - dav1d plugin
-0#libheif-plugin-libde265#libheif-plugin-libde265;1.21.2-3;amd64;debian-testing-main#1.21.2-3#1.21.2-2#amd64#debian-testing-main#normal#HEIF and AVIF file format decoder and encoder - libde265 plugin
-0#libheif-plugin-x265#libheif-plugin-x265;1.21.2-3;amd64;debian-testing-main#1.21.2-3#1.21.2-2#amd64#debian-testing-main#normal#HEIF and AVIF file format decoder and encoder - x265 plugin
-0#libheif1#libheif1;1.21.2-3;amd64;debian-testing-main#1.21.2-3#1.21.2-2#amd64#debian-testing-main#normal#HEIF and AVIF file format decoder and encoder - shared library
-0#libid3tag0#libid3tag0;0.16.3-4;amd64;debian-testing-main#0.16.3-4#0.16.3-3#amd64#debian-testing-main#normal#ID3 tag reading library from the MAD project
-0#liblastlog2-2#liblastlog2-2;2.41.3-4;amd64;debian-testing-main#2.41.3-4#2.41.3-3#amd64#debian-testing-main#normal#lastlog2 database shared library
-0#liblttng-ust-common1t64#liblttng-ust-common1t64;2.15.0-1;amd64;debian-testing-main#2.15.0-1#2.14.0-1.1+b1#amd64#debian-testing-main#normal#LTTng 2.0 Userspace Tracer (common library)
-0#liblttng-ust-ctl6#liblttng-ust-ctl6;2.15.0-1;amd64;debian-testing-main#2.15.0-1#2.14.0-1.1+b1#amd64#debian-testing-main#normal#LTTng 2.0 Userspace Tracer (trace control library)
-0#liblttng-ust1t64#liblttng-ust1t64;2.15.0-1;amd64;debian-testing-main#2.15.0-1#2.14.0-1.1+b1#amd64#debian-testing-main#normal#LTTng 2.0 Userspace Tracer (tracing libraries)
-0#libmount1#libmount1;2.41.3-4;amd64;debian-testing-main#2.41.3-4#2.41.3-3#amd64#debian-testing-main#normal#device mounting library
-0#libp11-kit0#libp11-kit0;0.26.2-2;amd64;debian-testing-main#0.26.2-2#0.25.10-1+b1#amd64#debian-testing-main#normal#library for loading and coordinating access to PKCS#11 modules - runtime
-0#libpulse-mainloop-glib0#libpulse-mainloop-glib0;17.0+dfsg1-2.1;amd64;debian-testing-main#17.0+dfsg1-2.1#17.0+dfsg1-2+b2#amd64#debian-testing-main#normal#PulseAudio client libraries (glib support)
-0#libpulse0#libpulse0;17.0+dfsg1-2.1;amd64;debian-testing-main#17.0+dfsg1-2.1#17.0+dfsg1-2+b2#amd64#debian-testing-main#normal#PulseAudio client libraries
-0#libsdl3-0#libsdl3-0;3.4.2+ds-1;amd64;debian-testing-main#3.4.2+ds-1#3.4.0+ds-1#amd64#debian-testing-main#normal#Simple DirectMedia Layer, version 3
-0#libsmartcols1#libsmartcols1;2.41.3-4;amd64;debian-testing-main#2.41.3-4#2.41.3-3#amd64#debian-testing-main#normal#smart column output alignment library
-0#libsuitesparseconfig7#libsuitesparseconfig7;1:7.12.2+dfsg-1;amd64;debian-testing-main#1:7.12.2+dfsg-1#1:7.12.1+dfsg-1#amd64#debian-testing-main#normal#configuration routines for all SuiteSparse modules
-0#libtss2-esys-3.0.2-0t64#libtss2-esys-3.0.2-0t64;4.1.3-4;amd64;debian-testing-main#4.1.3-4#4.1.3-1.3#amd64#debian-testing-main#normal#TPM2 Software stack library - TSS and TCTI libraries
-0#libtss2-mu-4.0.1-0t64#libtss2-mu-4.0.1-0t64;4.1.3-4;amd64;debian-testing-main#4.1.3-4#4.1.3-1.3#amd64#debian-testing-main#normal#TPM2 Software stack library - TSS and TCTI libraries
-0#libtss2-rc0t64#libtss2-rc0t64;4.1.3-4;amd64;debian-testing-main#4.1.3-4#4.1.3-1.3#amd64#debian-testing-main#normal#TPM2 Software stack library - TSS and TCTI libraries
-0#libtss2-sys1t64#libtss2-sys1t64;4.1.3-4;amd64;debian-testing-main#4.1.3-4#4.1.3-1.3#amd64#debian-testing-main#normal#TPM2 Software stack library - TSS and TCTI libraries
-0#libtss2-tcti-cmd0t64#libtss2-tcti-cmd0t64;4.1.3-4;amd64;debian-testing-main#4.1.3-4#4.1.3-1.3#amd64#debian-testing-main#normal#TPM2 Software stack library - TSS and TCTI libraries
-0#libtss2-tcti-device0t64#libtss2-tcti-device0t64;4.1.3-4;amd64;debian-testing-main#4.1.3-4#4.1.3-1.3#amd64#debian-testing-main#normal#TPM2 Software stack library - TSS and TCTI libraries
-0#libtss2-tcti-libtpms0t64#libtss2-tcti-libtpms0t64;4.1.3-4;amd64;debian-testing-main#4.1.3-4#4.1.3-1.3#amd64#debian-testing-main#normal#TPM2 Software stack library - TSS and TCTI libraries
-0#libtss2-tcti-mssim0t64#libtss2-tcti-mssim0t64;4.1.3-4;amd64;debian-testing-main#4.1.3-4#4.1.3-1.3#amd64#debian-testing-main#normal#TPM2 Software stack library - TSS and TCTI libraries
-0#libtss2-tcti-spi-helper0t64#libtss2-tcti-spi-helper0t64;4.1.3-4;amd64;debian-testing-main#4.1.3-4#4.1.3-1.3#amd64#debian-testing-main#normal#TPM2 Software stack library - TSS and TCTI libraries
-0#libtss2-tcti-swtpm0t64#libtss2-tcti-swtpm0t64;4.1.3-4;amd64;debian-testing-main#4.1.3-4#4.1.3-1.3#amd64#debian-testing-main#normal#TPM2 Software stack library - TSS and TCTI libraries
-0#libtss2-tctildr0t64#libtss2-tctildr0t64;4.1.3-4;amd64;debian-testing-main#4.1.3-4#4.1.3-1.3#amd64#debian-testing-main#normal#TPM2 Software stack library - TSS and TCTI libraries
-0#libumfpack6#libumfpack6;1:7.12.2+dfsg-1;amd64;debian-testing-main#1:7.12.2+dfsg-1#1:7.12.1+dfsg-1#amd64#debian-testing-main#normal#sparse LU factorization library
-0#libuuid1#libuuid1;2.41.3-4;amd64;debian-testing-main#2.41.3-4#2.41.3-3#amd64#debian-testing-main#normal#Universally Unique ID library
-0#libvte-2.91-0#libvte-2.91-0;0.83.90-1;amd64;debian-testing-main#0.83.90-1#0.82.3-2+b1#amd64#debian-testing-main#normal#Terminal emulator widget for GTK 3 - runtime files
-0#libvte-2.91-common#libvte-2.91-common;0.83.90-1;amd64;debian-testing-main#0.83.90-1#0.82.3-2+b1#amd64#debian-testing-main#normal#Terminal emulator widget for GTK 3 - common files
-0#libvte-2.91-gtk4-0#libvte-2.91-gtk4-0;0.83.90-1;amd64;debian-testing-main#0.83.90-1#0.82.3-2+b1#amd64#debian-testing-main#normal#Terminal emulator widget for GTK 4 - runtime files
-0#login#login;1:4.16.0-2+really2.41.3-4;amd64;debian-testing-main#1:4.16.0-2+really2.41.3-4#1:4.16.0-2+really2.41.3-3#amd64#debian-testing-main#normal#system login tools
-0#mount#mount;2.41.3-4;amd64;debian-testing-main#2.41.3-4#2.41.3-3#amd64#debian-testing-main#normal#tools for mounting and manipulating filesystems
-0#node-ansi-regex#node-ansi-regex;6.2.2-1;all;debian-testing-main#6.2.2-1#5.0.1-1#all#debian-testing-main#normal#regular expression for matching ANSI escape codes
-0#node-hosted-git-info#node-hosted-git-info;9.0.2-1;all;debian-testing-main#9.0.2-1#6.1.1-2#all#debian-testing-main#normal#Provides metadata from Github, Bitbucket and Gitlab
-0#node-jest-debbundle#node-jest-debbundle;29.6.2~ds1+~cs73.45.28-10;all;debian-testing-main#29.6.2~ds1+~cs73.45.28-10#29.6.2~ds1+~cs73.45.28-9#all#debian-testing-main#normal#various ittle Node.js modules needed by jest
-0#node-jest-worker#node-jest-worker;29.6.2~ds1+~cs73.45.28-10;all;debian-testing-main#29.6.2~ds1+~cs73.45.28-10#29.6.2~ds1+~cs73.45.28-9#all#debian-testing-main#normal#Nodejs module for executing heavy tasks under forked processes in parallel
-0#node-spdx-correct#node-spdx-correct;3.2.0+~3.1.3-1;all;debian-testing-main#3.2.0+~3.1.3-1#3.1.1-2#all#debian-testing-main#normal#correct invalid SPDX identifiers
-0#p11-kit#p11-kit;0.26.2-2;amd64;debian-testing-main#0.26.2-2#0.25.10-1+b1#amd64#debian-testing-main#normal#p11-glue utilities
-0#p11-kit-modules#p11-kit-modules;0.26.2-2;amd64;debian-testing-main#0.26.2-2#0.25.10-1+b1#amd64#debian-testing-main#normal#p11-glue proxy and trust modules
-0#python3-brlapi#python3-brlapi;6.9-2;amd64;debian-testing-main#6.9-2#6.8-5#amd64#debian-testing-main#normal#Braille display access via BRLTTY - Python3 bindings
-0#python3-virtualenv#python3-virtualenv;20.38.0+ds-1;all;debian-testing-main#20.38.0+ds-1#20.36.1+ds-1#all#debian-testing-main#normal#Python virtual environment creator
-0#rtkit#rtkit;0.14-1;amd64;debian-testing-main#0.14-1#0.13-5.1#amd64#debian-testing-main#normal#Realtime Policy and Watchdog Daemon
-0#ruby-mini-portile2#ruby-mini-portile2;2.8.9-1;all;debian-testing-main#2.8.9-1#2.8.7-2#all#debian-testing-main#normal#simplistic port-like solution for developers
-0#tar#tar;1.35+dfsg-4;amd64;debian-testing-main#1.35+dfsg-4#1.35+dfsg-3.1#amd64#debian-testing-main#normal#GNU version of the tar archiving utility
-0#tpm-udev#tpm-udev;0.7;all;debian-testing-main#0.7#0.6+nmu1#all#debian-testing-main#normal#udev rules for TPM modules
-0#util-linux#util-linux;2.41.3-4;amd64;debian-testing-main#2.41.3-4#2.41.3-3#amd64#debian-testing-main#normal#miscellaneous system utilities
-0#util-linux-extra#util-linux-extra;2.41.3-4;amd64;debian-testing-main#2.41.3-4#2.41.3-3#amd64#debian-testing-main#normal#interactive login tools
-0#util-linux-locales#util-linux-locales;2.41.3-4;all;debian-testing-main#2.41.3-4#2.41.3-3#all#debian-testing-main#normal#locales files for util-linux
-0#xbrlapi#xbrlapi;6.9-2;amd64;debian-testing-main#6.9-2#6.8-5#amd64#debian-testing-main#normal#Access software for a blind person using a braille display - xbrlapi
-0#yt-dlp#yt-dlp;2026.02.21-1;all;debian-testing-main#2026.02.21-1#2026.01.31-1#all#debian-testing-main#normal#downloader of videos from YouTube and other sites
-0#libtss2-fapi1t64#libtss2-fapi1t64;4.1.3-4;amd64;debian-testing-main#4.1.3-4##amd64#debian-testing-main#other#TPM2 Software stack library - TSS and TCTI libraries
+0#automake#automake;1:1.18.1-4;all;debian-testing-main#1:1.18.1-4#1:1.18.1-3#all#debian-testing-main#normal#Tool for generating GNU Standards-compliant Makefiles
+0#debconf#debconf;1.5.92;all;debian-testing-main#1.5.92#1.5.91#all#debian-testing-main#normal#Debian configuration management system
+0#debconf-i18n#debconf-i18n;1.5.92;all;debian-testing-main#1.5.92#1.5.91#all#debian-testing-main#normal#full internationalization support for debconf
+0#gimp#gimp;3.2.0~RC3-1;amd64;debian-testing-main#3.2.0~RC3-1#3.2.0~RC2-3.3#amd64#debian-testing-main#normal#GNU Image Manipulation Program
+0#gimp-data#gimp-data;3.2.0~RC3-1;all;debian-testing-main#3.2.0~RC3-1#3.2.0~RC2-3.3#all#debian-testing-main#normal#Data files for GIMP
+0#gir1.2-gimp-3.0#gir1.2-gimp-3.0;3.2.0~RC3-1;amd64;debian-testing-main#3.2.0~RC3-1#3.2.0~RC2-3.3#amd64#debian-testing-main#normal#Introspection data for the GIMP library
+0#gvfs#gvfs;1.59.90-3;amd64;debian-testing-main#1.59.90-3#1.59.1-1#amd64#debian-testing-main#normal#userspace virtual filesystem - GIO module
+0#gvfs-backends#gvfs-backends;1.59.90-3;amd64;debian-testing-main#1.59.90-3#1.59.1-1#amd64#debian-testing-main#normal#userspace virtual filesystem - backends
+0#gvfs-common#gvfs-common;1.59.90-3;all;debian-testing-main#1.59.90-3#1.59.1-1#all#debian-testing-main#normal#userspace virtual filesystem - common data files
+0#gvfs-daemons#gvfs-daemons;1.59.90-3;amd64;debian-testing-main#1.59.90-3#1.59.1-1#amd64#debian-testing-main#normal#userspace virtual filesystem - servers
+0#gvfs-fuse#gvfs-fuse;1.59.90-3;amd64;debian-testing-main#1.59.90-3#1.59.1-1#amd64#debian-testing-main#normal#userspace virtual filesystem - fuse server
+0#gvfs-libs#gvfs-libs;1.59.90-3;amd64;debian-testing-main#1.59.90-3#1.59.1-1#amd64#debian-testing-main#normal#userspace virtual filesystem - private libraries
+0#libbluray3#libbluray3;1:1.4.1-1;amd64;debian-testing-main#1:1.4.1-1#1:1.4.0-4#amd64#debian-testing-main#normal#Blu-ray disc playback support library (shared library)
+0#libgimp-3.0-0#libgimp-3.0-0;3.2.0~RC3-1;amd64;debian-testing-main#3.2.0~RC3-1#3.2.0~RC2-3.3#amd64#debian-testing-main#normal#Libraries for the GNU Image Manipulation Program
+0#liblua5.2-0#liblua5.2-0;5.2.4-4;amd64;debian-testing-main#5.2.4-4#5.2.4-3+b4#amd64#debian-testing-main#normal#Shared library for the Lua interpreter version 5.2
+0#libpthreadpool0#libpthreadpool0;0.0~git20251020.0e6ca13-1.1;amd64;debian-testing-main#0.0~git20251020.0e6ca13-1.1#0.0~git20240616.560c60d-1#amd64#debian-testing-main#normal#pthread-based thread pool for C/C++ (shared object)
+0#linux-base-amd64#linux-base-amd64;6.18.15-1;amd64;debian-testing-main#6.18.15-1#6.18.12-1#amd64#debian-testing-main#normal#Linux for 64-bit PCs (dummy package)
+0#linux-image-amd64#linux-image-amd64;6.18.15-1;amd64;debian-testing-main#6.18.15-1#6.18.12-1#amd64#debian-testing-main#normal#Linux for 64-bit PCs (meta-package)
+0#linux-libc-dev#linux-libc-dev;6.18.15-1;all;debian-testing-main#6.18.15-1#6.18.12-1#all#debian-testing-main#normal#Linux support headers for userspace development
+0#node-babel7#node-babel7;7.20.15+ds1+~cs214.269.168-13;all;debian-testing-main#7.20.15+ds1+~cs214.269.168-13#7.20.15+ds1+~cs214.269.168-11#all#debian-testing-main#normal#Babel compiler for writing next generation JavaScript
+0#node-babel7-runtime#node-babel7-runtime;7.20.15+ds1+~cs214.269.168-13;all;debian-testing-main#7.20.15+ds1+~cs214.269.168-13#7.20.15+ds1+~cs214.269.168-11#all#debian-testing-main#normal#Babel modular runtime helpers
+0#python3-debconf#python3-debconf;1.5.92;all;debian-testing-main#1.5.92#1.5.91#all#debian-testing-main#normal#interact with debconf from Python 3
+0#linux-base-6.18.15+deb14-amd64#linux-base-6.18.15+deb14-amd64;6.18.15-1;amd64;debian-testing-main#6.18.15-1##amd64#debian-testing-main#other#Linux for 64-bit PCs (dummy package)
+0#linux-image-6.18.15+deb14-amd64#linux-image-6.18.15+deb14-amd64;6.18.15-1;amd64;debian-testing-main#6.18.15-1##amd64#debian-testing-main#other#Linux 6.18.15 for 64-bit PCs (signed)
