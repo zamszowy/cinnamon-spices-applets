@@ -313,7 +313,6 @@ const UpdatesIndicator = GObject.registerClass(
             else if (style === 'symbolic') name += 'symbolic';
             else name += 'dark';
 
-            console.log(`${UUID}: Setting icon: ${name}`);
             this._loadFileIcon(`${name}.svg`);
         }
 
